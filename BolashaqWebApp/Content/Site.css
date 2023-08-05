@@ -1,0 +1,72 @@
+﻿body {
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+    background-color: #777;
+    border-color: #fff
+}
+
+.header {
+    background: #0a1b7e;
+    padding: 30px;
+}
+
+.header-title {
+    color: white;
+    font-weight: 400;
+    vertical-align: central;
+    text-align: center;
+    font-size: 32px;
+}
+
+.grid {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.gridItem {
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    border: solid 1px;
+}
+
+.imageContainer {
+    display: flex;
+
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    font-size: 34px;
+    font-weight: bold;
+    text-align: center;
+}

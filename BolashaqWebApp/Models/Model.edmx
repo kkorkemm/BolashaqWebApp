@@ -1,0 +1,1075 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище BolashaqDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AgeClasses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kruzhok">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="StudyPeriodStart" Type="date" Nullable="false" />
+          <Property Name="StudyPeriodEnd" Type="date" Nullable="false" />
+          <Property Name="AgeClassID" Type="int" Nullable="false" />
+          <Property Name="PlaceCount" Type="tinyint" Nullable="false" />
+          <Property Name="OtdelID" Type="int" Nullable="false" />
+          <Property Name="TeacherID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KruzhokPictures">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KruzhokID" Type="int" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Lgots">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MethodistOtdels">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="OtdelID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Otdels">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Poseshenie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KruzhokID" Type="int" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="LessonTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PoseshenieStatuses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentLgots">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="LgotID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DateofBirth" Type="date" Nullable="false" />
+          <Property Name="GenderID" Type="tinyint" Nullable="false" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IIN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="S027Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentDoc" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="LastLoginTime" Type="datetime" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserRoleID" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zayavka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="KruzhokID" Type="int" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZayavkaStatuses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Kruzhok_AgeClasses">
+          <End Role="AgeClasses" Type="Self.AgeClasses" Multiplicity="1" />
+          <End Role="Kruzhok" Type="Self.Kruzhok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeClasses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Kruzhok">
+              <PropertyRef Name="AgeClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kruzhok_Otdels">
+          <End Role="Otdels" Type="Self.Otdels" Multiplicity="1" />
+          <End Role="Kruzhok" Type="Self.Kruzhok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdels">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Kruzhok">
+              <PropertyRef Name="OtdelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kruzhok_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Kruzhok" Type="Self.Kruzhok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Kruzhok">
+              <PropertyRef Name="TeacherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KruzhokPictures_Kruzhok">
+          <End Role="Kruzhok" Type="Self.Kruzhok" Multiplicity="1" />
+          <End Role="KruzhokPictures" Type="Self.KruzhokPictures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kruzhok">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="KruzhokPictures">
+              <PropertyRef Name="KruzhokID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MethodistOtdels_Otdels">
+          <End Role="Otdels" Type="Self.Otdels" Multiplicity="1" />
+          <End Role="MethodistOtdels" Type="Self.MethodistOtdels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdels">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MethodistOtdels">
+              <PropertyRef Name="OtdelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MethodistOtdels_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="MethodistOtdels" Type="Self.MethodistOtdels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MethodistOtdels">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poseshenie_Kruzhok">
+          <End Role="Kruzhok" Type="Self.Kruzhok" Multiplicity="1" />
+          <End Role="Poseshenie" Type="Self.Poseshenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kruzhok">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Poseshenie">
+              <PropertyRef Name="KruzhokID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poseshenie_PoseshenieStatuses">
+          <End Role="PoseshenieStatuses" Type="Self.PoseshenieStatuses" Multiplicity="1" />
+          <End Role="Poseshenie" Type="Self.Poseshenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PoseshenieStatuses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Poseshenie">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poseshenie_Students1">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="Poseshenie" Type="Self.Poseshenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Poseshenie">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentLgots_Lgots">
+          <End Role="Lgots" Type="Self.Lgots" Multiplicity="1" />
+          <End Role="StudentLgots" Type="Self.StudentLgots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lgots">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StudentLgots">
+              <PropertyRef Name="LgotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Genders">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_StudentLgots">
+          <End Role="StudentLgots" Type="Self.StudentLgots" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentLgots">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserRoles">
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_Kruzhok">
+          <End Role="Kruzhok" Type="Self.Kruzhok" Multiplicity="1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kruzhok">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="KruzhokID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_ZayavkaStatuses">
+          <End Role="ZayavkaStatuses" Type="Self.ZayavkaStatuses" Multiplicity="1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZayavkaStatuses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище BolashaqDBModelContainer">
+          <EntitySet Name="AgeClasses" EntityType="Self.AgeClasses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genders" EntityType="Self.Genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kruzhok" EntityType="Self.Kruzhok" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KruzhokPictures" EntityType="Self.KruzhokPictures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lgots" EntityType="Self.Lgots" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MethodistOtdels" EntityType="Self.MethodistOtdels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Otdels" EntityType="Self.Otdels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Poseshenie" EntityType="Self.Poseshenie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PoseshenieStatuses" EntityType="Self.PoseshenieStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentLgots" EntityType="Self.StudentLgots" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zayavka" EntityType="Self.Zayavka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZayavkaStatuses" EntityType="Self.ZayavkaStatuses" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Kruzhok_AgeClasses" Association="Self.FK_Kruzhok_AgeClasses">
+            <End Role="AgeClasses" EntitySet="AgeClasses" />
+            <End Role="Kruzhok" EntitySet="Kruzhok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kruzhok_Otdels" Association="Self.FK_Kruzhok_Otdels">
+            <End Role="Otdels" EntitySet="Otdels" />
+            <End Role="Kruzhok" EntitySet="Kruzhok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kruzhok_Users" Association="Self.FK_Kruzhok_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Kruzhok" EntitySet="Kruzhok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KruzhokPictures_Kruzhok" Association="Self.FK_KruzhokPictures_Kruzhok">
+            <End Role="Kruzhok" EntitySet="Kruzhok" />
+            <End Role="KruzhokPictures" EntitySet="KruzhokPictures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MethodistOtdels_Otdels" Association="Self.FK_MethodistOtdels_Otdels">
+            <End Role="Otdels" EntitySet="Otdels" />
+            <End Role="MethodistOtdels" EntitySet="MethodistOtdels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MethodistOtdels_Users" Association="Self.FK_MethodistOtdels_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="MethodistOtdels" EntitySet="MethodistOtdels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poseshenie_Kruzhok" Association="Self.FK_Poseshenie_Kruzhok">
+            <End Role="Kruzhok" EntitySet="Kruzhok" />
+            <End Role="Poseshenie" EntitySet="Poseshenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poseshenie_PoseshenieStatuses" Association="Self.FK_Poseshenie_PoseshenieStatuses">
+            <End Role="PoseshenieStatuses" EntitySet="PoseshenieStatuses" />
+            <End Role="Poseshenie" EntitySet="Poseshenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poseshenie_Students1" Association="Self.FK_Poseshenie_Students1">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Poseshenie" EntitySet="Poseshenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentLgots_Lgots" Association="Self.FK_StudentLgots_Lgots">
+            <End Role="Lgots" EntitySet="Lgots" />
+            <End Role="StudentLgots" EntitySet="StudentLgots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Genders" Association="Self.FK_Students_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_StudentLgots" Association="Self.FK_Students_StudentLgots">
+            <End Role="StudentLgots" EntitySet="StudentLgots" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Users" Association="Self.FK_Students_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserRoles" Association="Self.FK_Users_UserRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_Kruzhok" Association="Self.FK_Zayavka_Kruzhok">
+            <End Role="Kruzhok" EntitySet="Kruzhok" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_ZayavkaStatuses" Association="Self.FK_Zayavka_ZayavkaStatuses">
+            <End Role="ZayavkaStatuses" EntitySet="ZayavkaStatuses" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BolashaqDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AgeClasses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Kruzhok" Relationship="Self.FK_Kruzhok_AgeClasses" FromRole="AgeClasses" ToRole="Kruzhok" />
+        </EntityType>
+        <EntityType Name="Genders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Students_Genders" FromRole="Genders" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Kruzhok">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="StudyPeriodStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StudyPeriodEnd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AgeClassID" Type="Int32" Nullable="false" />
+          <Property Name="PlaceCount" Type="Byte" Nullable="false" />
+          <Property Name="OtdelID" Type="Int32" Nullable="false" />
+          <Property Name="TeacherID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AgeClasses" Relationship="Self.FK_Kruzhok_AgeClasses" FromRole="Kruzhok" ToRole="AgeClasses" />
+          <NavigationProperty Name="Otdels" Relationship="Self.FK_Kruzhok_Otdels" FromRole="Kruzhok" ToRole="Otdels" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Kruzhok_Users" FromRole="Kruzhok" ToRole="Users" />
+          <NavigationProperty Name="Poseshenie" Relationship="Self.FK_Poseshenie_Kruzhok" FromRole="Kruzhok" ToRole="Poseshenie" />
+          <NavigationProperty Name="Zayavka" Relationship="Self.FK_Zayavka_Kruzhok" FromRole="Kruzhok" ToRole="Zayavka" />
+          <NavigationProperty Name="KruzhokPictures" Relationship="BolashaqDBModel.FK_KruzhokPictures_Kruzhok" FromRole="Kruzhok" ToRole="KruzhokPictures" />
+        </EntityType>
+        <EntityType Name="Lgots">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="StudentLgots" Relationship="Self.FK_StudentLgots_Lgots" FromRole="Lgots" ToRole="StudentLgots" />
+        </EntityType>
+        <EntityType Name="MethodistOtdels">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="OtdelID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Otdels" Relationship="Self.FK_MethodistOtdels_Otdels" FromRole="MethodistOtdels" ToRole="Otdels" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_MethodistOtdels_Users" FromRole="MethodistOtdels" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Otdels">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Kruzhok" Relationship="Self.FK_Kruzhok_Otdels" FromRole="Otdels" ToRole="Kruzhok" />
+          <NavigationProperty Name="MethodistOtdels" Relationship="Self.FK_MethodistOtdels_Otdels" FromRole="Otdels" ToRole="MethodistOtdels" />
+        </EntityType>
+        <EntityType Name="Poseshenie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KruzhokID" Type="Int32" Nullable="false" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="LessonTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kruzhok" Relationship="Self.FK_Poseshenie_Kruzhok" FromRole="Poseshenie" ToRole="Kruzhok" />
+          <NavigationProperty Name="PoseshenieStatuses" Relationship="Self.FK_Poseshenie_PoseshenieStatuses" FromRole="Poseshenie" ToRole="PoseshenieStatuses" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Poseshenie_Students1" FromRole="Poseshenie" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="PoseshenieStatuses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Poseshenie" Relationship="Self.FK_Poseshenie_PoseshenieStatuses" FromRole="PoseshenieStatuses" ToRole="Poseshenie" />
+        </EntityType>
+        <EntityType Name="StudentLgots">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="LgotID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Lgots" Relationship="Self.FK_StudentLgots_Lgots" FromRole="StudentLgots" ToRole="Lgots" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Students_StudentLgots" FromRole="StudentLgots" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DateofBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="GenderID" Type="Byte" Nullable="false" />
+          <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IIN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="S027Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ParentDoc" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Genders" Relationship="Self.FK_Students_Genders" FromRole="Students" ToRole="Genders" />
+          <NavigationProperty Name="Poseshenie" Relationship="Self.FK_Poseshenie_Students1" FromRole="Students" ToRole="Poseshenie" />
+          <NavigationProperty Name="StudentLgots" Relationship="Self.FK_Students_StudentLgots" FromRole="Students" ToRole="StudentLgots" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Students_Users" FromRole="Students" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_UserRoles" FromRole="UserRoles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
+          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserRoleID" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Kruzhok" Relationship="Self.FK_Kruzhok_Users" FromRole="Users" ToRole="Kruzhok" />
+          <NavigationProperty Name="MethodistOtdels" Relationship="Self.FK_MethodistOtdels_Users" FromRole="Users" ToRole="MethodistOtdels" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Students_Users" FromRole="Users" ToRole="Students" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_Users_UserRoles" FromRole="Users" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="Zayavka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="KruzhokID" Type="Int32" Nullable="false" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kruzhok" Relationship="Self.FK_Zayavka_Kruzhok" FromRole="Zayavka" ToRole="Kruzhok" />
+          <NavigationProperty Name="ZayavkaStatuses" Relationship="Self.FK_Zayavka_ZayavkaStatuses" FromRole="Zayavka" ToRole="ZayavkaStatuses" />
+        </EntityType>
+        <EntityType Name="ZayavkaStatuses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Zayavka" Relationship="Self.FK_Zayavka_ZayavkaStatuses" FromRole="ZayavkaStatuses" ToRole="Zayavka" />
+        </EntityType>
+        <Association Name="FK_Kruzhok_AgeClasses">
+          <End Role="AgeClasses" Type="Self.AgeClasses" Multiplicity="1" />
+          <End Role="Kruzhok" Type="Self.Kruzhok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeClasses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Kruzhok">
+              <PropertyRef Name="AgeClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Genders">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kruzhok_Otdels">
+          <End Role="Otdels" Type="Self.Otdels" Multiplicity="1" />
+          <End Role="Kruzhok" Type="Self.Kruzhok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdels">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Kruzhok">
+              <PropertyRef Name="OtdelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kruzhok_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Kruzhok" Type="Self.Kruzhok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Kruzhok">
+              <PropertyRef Name="TeacherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poseshenie_Kruzhok">
+          <End Role="Kruzhok" Type="Self.Kruzhok" Multiplicity="1" />
+          <End Role="Poseshenie" Type="Self.Poseshenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kruzhok">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Poseshenie">
+              <PropertyRef Name="KruzhokID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_Kruzhok">
+          <End Role="Kruzhok" Type="Self.Kruzhok" Multiplicity="1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kruzhok">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="KruzhokID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentLgots_Lgots">
+          <End Role="Lgots" Type="Self.Lgots" Multiplicity="1" />
+          <End Role="StudentLgots" Type="Self.StudentLgots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lgots">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StudentLgots">
+              <PropertyRef Name="LgotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MethodistOtdels_Otdels">
+          <End Role="Otdels" Type="Self.Otdels" Multiplicity="1" />
+          <End Role="MethodistOtdels" Type="Self.MethodistOtdels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdels">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MethodistOtdels">
+              <PropertyRef Name="OtdelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MethodistOtdels_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="MethodistOtdels" Type="Self.MethodistOtdels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MethodistOtdels">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poseshenie_PoseshenieStatuses">
+          <End Role="PoseshenieStatuses" Type="Self.PoseshenieStatuses" Multiplicity="1" />
+          <End Role="Poseshenie" Type="Self.Poseshenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PoseshenieStatuses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Poseshenie">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poseshenie_Students1">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="Poseshenie" Type="Self.Poseshenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Poseshenie">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_StudentLgots">
+          <End Role="StudentLgots" Type="Self.StudentLgots" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentLgots">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserRoles">
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_ZayavkaStatuses">
+          <End Role="ZayavkaStatuses" Type="Self.ZayavkaStatuses" Multiplicity="1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZayavkaStatuses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BolashaqDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AgeClasses" EntityType="Self.AgeClasses" />
+          <EntitySet Name="Genders" EntityType="Self.Genders" />
+          <EntitySet Name="Kruzhok" EntityType="Self.Kruzhok" />
+          <EntitySet Name="Lgots" EntityType="Self.Lgots" />
+          <EntitySet Name="MethodistOtdels" EntityType="Self.MethodistOtdels" />
+          <EntitySet Name="Otdels" EntityType="Self.Otdels" />
+          <EntitySet Name="Poseshenie" EntityType="Self.Poseshenie" />
+          <EntitySet Name="PoseshenieStatuses" EntityType="Self.PoseshenieStatuses" />
+          <EntitySet Name="StudentLgots" EntityType="Self.StudentLgots" />
+          <EntitySet Name="Students" EntityType="Self.Students" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Zayavka" EntityType="Self.Zayavka" />
+          <EntitySet Name="ZayavkaStatuses" EntityType="Self.ZayavkaStatuses" />
+          <AssociationSet Name="FK_Kruzhok_AgeClasses" Association="Self.FK_Kruzhok_AgeClasses">
+            <End Role="AgeClasses" EntitySet="AgeClasses" />
+            <End Role="Kruzhok" EntitySet="Kruzhok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Genders" Association="Self.FK_Students_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kruzhok_Otdels" Association="Self.FK_Kruzhok_Otdels">
+            <End Role="Otdels" EntitySet="Otdels" />
+            <End Role="Kruzhok" EntitySet="Kruzhok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kruzhok_Users" Association="Self.FK_Kruzhok_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Kruzhok" EntitySet="Kruzhok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poseshenie_Kruzhok" Association="Self.FK_Poseshenie_Kruzhok">
+            <End Role="Kruzhok" EntitySet="Kruzhok" />
+            <End Role="Poseshenie" EntitySet="Poseshenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_Kruzhok" Association="Self.FK_Zayavka_Kruzhok">
+            <End Role="Kruzhok" EntitySet="Kruzhok" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentLgots_Lgots" Association="Self.FK_StudentLgots_Lgots">
+            <End Role="Lgots" EntitySet="Lgots" />
+            <End Role="StudentLgots" EntitySet="StudentLgots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MethodistOtdels_Otdels" Association="Self.FK_MethodistOtdels_Otdels">
+            <End Role="Otdels" EntitySet="Otdels" />
+            <End Role="MethodistOtdels" EntitySet="MethodistOtdels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MethodistOtdels_Users" Association="Self.FK_MethodistOtdels_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="MethodistOtdels" EntitySet="MethodistOtdels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poseshenie_PoseshenieStatuses" Association="Self.FK_Poseshenie_PoseshenieStatuses">
+            <End Role="PoseshenieStatuses" EntitySet="PoseshenieStatuses" />
+            <End Role="Poseshenie" EntitySet="Poseshenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poseshenie_Students1" Association="Self.FK_Poseshenie_Students1">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Poseshenie" EntitySet="Poseshenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_StudentLgots" Association="Self.FK_Students_StudentLgots">
+            <End Role="StudentLgots" EntitySet="StudentLgots" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Users" Association="Self.FK_Students_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserRoles" Association="Self.FK_Users_UserRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_ZayavkaStatuses" Association="Self.FK_Zayavka_ZayavkaStatuses">
+            <End Role="ZayavkaStatuses" EntitySet="ZayavkaStatuses" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <EntitySet Name="KruzhokPictures" EntityType="BolashaqDBModel.KruzhokPictures" />
+          <AssociationSet Name="FK_KruzhokPictures_Kruzhok" Association="BolashaqDBModel.FK_KruzhokPictures_Kruzhok">
+            <End Role="Kruzhok" EntitySet="Kruzhok" />
+            <End Role="KruzhokPictures" EntitySet="KruzhokPictures" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="KruzhokPictures">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KruzhokID" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Kruzhok" Relationship="BolashaqDBModel.FK_KruzhokPictures_Kruzhok" FromRole="KruzhokPictures" ToRole="Kruzhok" />
+        </EntityType>
+        <Association Name="FK_KruzhokPictures_Kruzhok">
+          <End Type="BolashaqDBModel.Kruzhok" Role="Kruzhok" Multiplicity="1" />
+          <End Type="BolashaqDBModel.KruzhokPictures" Role="KruzhokPictures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kruzhok">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="KruzhokPictures">
+              <PropertyRef Name="KruzhokID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BolashaqDBModelContainer" CdmEntityContainer="BolashaqDBEntities">
+          <EntitySetMapping Name="AgeClasses">
+            <EntityTypeMapping TypeName="BolashaqDBModel.AgeClasses">
+              <MappingFragment StoreEntitySet="AgeClasses">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="BolashaqDBModel.Genders">
+              <MappingFragment StoreEntitySet="Genders">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kruzhok">
+            <EntityTypeMapping TypeName="BolashaqDBModel.Kruzhok">
+              <MappingFragment StoreEntitySet="Kruzhok">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="StudyPeriodStart" ColumnName="StudyPeriodStart" />
+                <ScalarProperty Name="StudyPeriodEnd" ColumnName="StudyPeriodEnd" />
+                <ScalarProperty Name="AgeClassID" ColumnName="AgeClassID" />
+                <ScalarProperty Name="PlaceCount" ColumnName="PlaceCount" />
+                <ScalarProperty Name="OtdelID" ColumnName="OtdelID" />
+                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lgots">
+            <EntityTypeMapping TypeName="BolashaqDBModel.Lgots">
+              <MappingFragment StoreEntitySet="Lgots">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MethodistOtdels">
+            <EntityTypeMapping TypeName="BolashaqDBModel.MethodistOtdels">
+              <MappingFragment StoreEntitySet="MethodistOtdels">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OtdelID" ColumnName="OtdelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Otdels">
+            <EntityTypeMapping TypeName="BolashaqDBModel.Otdels">
+              <MappingFragment StoreEntitySet="Otdels">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Poseshenie">
+            <EntityTypeMapping TypeName="BolashaqDBModel.Poseshenie">
+              <MappingFragment StoreEntitySet="Poseshenie">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="KruzhokID" ColumnName="KruzhokID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="LessonTitle" ColumnName="LessonTitle" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PoseshenieStatuses">
+            <EntityTypeMapping TypeName="BolashaqDBModel.PoseshenieStatuses">
+              <MappingFragment StoreEntitySet="PoseshenieStatuses">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentLgots">
+            <EntityTypeMapping TypeName="BolashaqDBModel.StudentLgots">
+              <MappingFragment StoreEntitySet="StudentLgots">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="LgotID" ColumnName="LgotID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="BolashaqDBModel.Students">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="IIN" ColumnName="IIN" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="S027Number" ColumnName="S027Number" />
+                <ScalarProperty Name="ParentDoc" ColumnName="ParentDoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BolashaqDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="BolashaqDBModel.UserRoles">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BolashaqDBModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zayavka">
+            <EntityTypeMapping TypeName="BolashaqDBModel.Zayavka">
+              <MappingFragment StoreEntitySet="Zayavka">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="KruzhokID" ColumnName="KruzhokID" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZayavkaStatuses">
+            <EntityTypeMapping TypeName="BolashaqDBModel.ZayavkaStatuses">
+              <MappingFragment StoreEntitySet="ZayavkaStatuses">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KruzhokPictures">
+            <EntityTypeMapping TypeName="BolashaqDBModel.KruzhokPictures">
+              <MappingFragment StoreEntitySet="KruzhokPictures">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="KruzhokID" ColumnName="KruzhokID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

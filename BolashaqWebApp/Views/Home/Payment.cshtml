@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Payment";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <link rel="stylesheet" href="~/Content/Site.css" />
+        <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    </head>
+
+    <body>
+
+        <header class="header">
+            <div style="display: flex; padding: 10px; justify-content: space-between; align-content: center; align-items: center;">
+                <img src="~/Images/logo.png" style="width: 100px;" />
+                <p class="header-title">Bolashaq saraiy</p>
+                <p style="color: white; font-size: 20px; margin: 10px;">Salem, Ahmetov Ahmet</p>
+            </div>
+        </header>
+
+        <div class="container">
+
+            @if (ViewBag.Current.Price != 0)
+            {
+                <div class="grid">
+                    <div>
+                        <label class="title">Оплата</label>
+
+                        <div>
+                            <form method="post">
+
+                                <input type="hidden" value="@DateTime.Now" name="Date" />
+                                <input type="hidden" value="@ViewBag.Current.ID" name="KruzhokID" />
+                                <input type="hidden" value="1" name="StatusID" />
+
+                                <div style="margin: 10px;">
+                                    <p>Номер карты: </p>
+                                    <input style="width: 400px;" name="CardNumber" />
+                                </div>
+                                <div style="display: flex; margin: 10px;">
+                                    <div style="display: flex; margin: 5px; align-items: center; align-content: center;">
+                                        <p>CVC:  </p>
+                                        <input type="number" style="width: 90px;" min="100" name="CVC" />
+                                    </div>
+                                    <div style="display: flex; margin: 5px; align-items: center; align-content: center;">
+                                        <p>MM: </p>
+                                        <input type="number" style="width: 70px;" max="12" min="1" name="Month" />
+                                    </div>
+                                    <div style="display: flex; margin: 5px; align-items: center; align-content: center;">
+                                        <p>YY: </p>
+                                        <input type="number" style="width: 70px;" min="2000" name="Year" />
+                                    </div>
+                                </div>
+                                <input type="submit" class="btn btn-success" value="Оплатить" style="margin: 20px;"/>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div>
+                        <label class="title">Детали оплаты</label>
+                        <p>Сумма: @ViewBag.Current.Price</p>
+                        <p>Кружок: @ViewBag.Current.Name</p>
+                        <p>Номер транзакций: </p>
+                        <p>Описание оплаты: </p>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <h2>Данный раздел находится на доработке</h2>
+            }
+
+        </div>
+
+    </body>
+
+</html>
+
+
